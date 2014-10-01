@@ -1,0 +1,8 @@
+namespace: dxl_manager
+serial_ports:
+  sweep_port:
+    port_name: "/dev/ttyUSB0"
+    baud_rate: 57142
+    min_motor_id: 1
+    max_motor_id: 25
+    update_rate: 20

@@ -1,0 +1,11 @@
+<launch>
+	<!-- Start the sweeper -->
+	<node name="sweeper" pkg="laser_sweep" type="sweep_node" output="screen">
+		<remap from="status" to="/sweep_controller/state" />
+		<remap from="command" to="/sweep_controller/command" />
+	</node>
+
+	<node name="Scan2PCL" pkg="laser_sweep" type="scan2pcl">
+		<remap from="cloud" to="sync_scan_cloud_filtered" />
+	</node>
+</launch>
