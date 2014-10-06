@@ -27,19 +27,6 @@ void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 	cloud.fields[1].offset = z_off;
 	cloud.fields[2].offset = x_off;
 
-/*
-	// Switch coordinates according to LOAM
-	unsigned int pclSize = cloud.width * cloud.height;
-	pcl::PointXYZ p;
-	for(unsigned int i; i < pclSize; i++)
-	{
-		unsigned int index i * cloud.point_step;
-		p = cloud.points[i];
-		cloud.points[i].x = p.y;
-		cloud.points[i].y = p.z;
-		cloud.points[i].z = p.x;
-	}
-*/
 	gCloudPublisher->publish(cloud);
 }
 
@@ -49,7 +36,6 @@ int main(int argc, char** argv)
 
 	ros::NodeHandle n;
 	tf::TransformListener tfl(n);
-//	tfl.setExtrapolationLimit(ros::Duration(0.1));
 	gTfListener = &tfl;
 
 	laser_geometry::LaserProjection projector;
