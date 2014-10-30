@@ -97,7 +97,6 @@
     <File Name="driver.launch"/>
     <File Name="hokuyo.launch"/>
     <File Name="start.launch"/>
-    <File Name="sweep.launch"/>
   </VirtualDirectory>
   <VirtualDirectory Name="config">
     <File Name="driver.yaml"/>
