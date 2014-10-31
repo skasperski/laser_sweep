@@ -92,11 +92,15 @@
   <VirtualDirectory Name="src">
     <File Name="scan2pcl.cpp"/>
     <File Name="sweep_node.cpp"/>
+    <File Name="calibration_node.cpp"/>
   </VirtualDirectory>
   <VirtualDirectory Name="launch">
     <File Name="driver.launch"/>
     <File Name="hokuyo.launch"/>
     <File Name="start.launch"/>
+    <File Name="controller.launch"/>
+    <File Name="manager.launch"/>
+    <File Name="scan2pcl.launch"/>
   </VirtualDirectory>
   <VirtualDirectory Name="config">
     <File Name="driver.yaml"/>
