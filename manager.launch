@@ -1,0 +1,8 @@
+<launch>
+
+	<!-- Start dynamixel driver -->
+	<node name="dynamixel_manager" pkg="dynamixel_controllers" type="controller_manager.py" required="true" output="screen">
+		<rosparam file="$(find laser_sweep)/driver.yaml"/>
+	</node>
+
+</launch>

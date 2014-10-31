@@ -1,0 +1,7 @@
+<launch>
+
+	<node name="Scan2PCL" pkg="laser_sweep" type="scan2pcl">
+		<remap from="cloud" to="sync_scan_cloud_filtered" />
+	</node>
+
+</launch>

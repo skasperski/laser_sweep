@@ -1,0 +1,7 @@
+<launch>
+
+	<!-- Start tilt joint controller -->
+	<rosparam file="$(find laser_sweep)/sweep.yaml" />
+	<node name="sweep_controller_spawner" pkg="dynamixel_controllers" type="controller_spawner.py" args="--manager=dxl_manager --port sweep_port sweep_controller" output="screen" />
+
+</launch>

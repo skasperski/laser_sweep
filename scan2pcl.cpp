@@ -10,12 +10,23 @@ ros::Publisher* gCloudPublisher;
 void scanCallback(const sensor_msgs::LaserScan::ConstPtr& scan)
 {
 	sensor_msgs::PointCloud2 cloud;
-	gTfListener->waitForTransform(scan->header.frame_id, "camera", scan->header.stamp, ros::Duration(0.1));
+	std::string error_msg;
+	if(!gTfListener->waitForTransform(scan->header.frame_id,
+	                                  "camera",
+	                                  scan->header.stamp + ros::Duration().fromSec(scan->ranges.size()*scan->time_increment),
+	                                  ros::Duration(2.0),
+	                                  ros::Duration(0.01),
+	                                  &error_msg))
+	{
+		ROS_WARN("%s", error_msg.c_str());
+		return;
+	}
 	try
 	{
 		gProjector->transformLaserScanToPointCloud("camera", *scan, cloud, *gTfListener);
-	}catch(tf::TransformException)
+	}catch(tf::TransformException e)
 	{
+		ROS_WARN("Could not transform scan to pointcloud! (%s)", e.what());
 		return;
 	}
 	

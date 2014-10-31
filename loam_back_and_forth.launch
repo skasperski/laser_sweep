@@ -1,0 +1,15 @@
+<launch>
+
+	<node pkg="loam_back_and_forth" type="scanRegistration" name="scanRegistration" output="screen"/>
+	<node pkg="loam_back_and_forth" type="laserOdometry" name="laserOdometry" output="screen">
+		<remap from="tf" to="tf_loam" />
+	</node>
+	<node pkg="loam_back_and_forth" type="laserMapping" name="laserMapping" output="screen"/>
+
+	<node name="Scan2PCL" pkg="laser_sweep" type="scan2pcl">
+		<remap from="cloud" to="sync_scan_cloud_filtered" />
+	</node>
+
+	<node launch-prefix="nice" pkg="rviz" type="rviz" name="rviz" args="-d $(find loam_back_and_forth)/loam_back_and_forth.rviz"/>
+
+</launch>

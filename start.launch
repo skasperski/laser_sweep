@@ -1,11 +1,14 @@
 <launch>
+
+	<!--node name="base_stp" pkg="tf" type="static_transform_publisher" args="0 0 0 0 1.570796327 -1.570796327 /camera /dxl_base  100"/ -->
+	<node name="base_stp" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 /camera /dxl_base  100"/>
+	<node name="laser_stp" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 /dxl_rotor /laser_link 100"/>
+
 	<!-- Start the sweeper -->
-	<node name="sweeper" pkg="laser_sweep" type="sweep_node" output="screen">
+	<node name="sweeper" pkg="laser_sweep" type="sweep_node">
 		<remap from="status" to="/sweep_controller/state" />
-		<remap from="command" to="/sweep_controller/command" />
+		<remap from="command" to="/sweep_controller/command__" />
 	</node>
 
-	<node name="Scan2PCL" pkg="laser_sweep" type="scan2pcl">
-		<remap from="cloud" to="sync_scan_cloud_filtered" />
-	</node>
+
 </launch>

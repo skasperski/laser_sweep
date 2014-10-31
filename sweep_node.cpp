@@ -8,7 +8,7 @@
 
 #define ID 1
 #define PI 1.570796327
-#define CORR -0.1
+#define CORR -0.15
 
 using namespace ros;
 
@@ -24,8 +24,8 @@ void statusHandler(const dynamixel_msgs::JointStateConstPtr& jointState)
 {
 	// Send Transform
 	double angle = jointState->current_pos - CORR;
-	tf::Transform transform(tf::createQuaternionFromRPY(-angle, 0, 0));
-	gTfBroadcaster->sendTransform(tf::StampedTransform(transform, jointState->header.stamp, "laser_link", "camera"));
+	tf::Transform transform(tf::createQuaternionFromRPY(angle, 0, 0));
+	gTfBroadcaster->sendTransform(tf::StampedTransform(transform, jointState->header.stamp, "dxl_base", "dxl_rotor"));
 
 	// Send command
 	if(!up && jointState->current_pos < min)

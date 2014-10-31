@@ -50,6 +50,7 @@ include_directories(
 ## Declare a cpp executable
 add_executable(sweep_node sweep_node.cpp)
 add_executable(scan2pcl scan2pcl.cpp)
+add_executable(calibration_node calibration_node.cpp)
 
 ## Add cmake target dependencies of the executable/library
 ## as an example, message headers may need to be generated before nodes
@@ -58,6 +59,7 @@ add_executable(scan2pcl scan2pcl.cpp)
 ## Specify libraries to link a library or executable target against
 target_link_libraries(sweep_node ${catkin_LIBRARIES})
 target_link_libraries(scan2pcl ${catkin_LIBRARIES})
+target_link_libraries(calibration_node ${catkin_LIBRARIES})
 
 #############
 ## Install ##
